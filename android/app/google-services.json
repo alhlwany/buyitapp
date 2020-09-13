@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "147053636469",
+    "firebase_url": "https://buy-it-ec8e8.firebaseio.com",
+    "project_id": "buy-it-ec8e8",
+    "storage_bucket": "buy-it-ec8e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147053636469:android:64ecc53e90a8fd1cf0013c",
+        "android_client_info": {
+          "package_name": "com.halwany.buyitapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "147053636469-o83m6dik6niu05e8orebmhq740a75f40.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDneVQlEwdIisXtFLJ6rBwlc_m51BXpwDg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "147053636469-o83m6dik6niu05e8orebmhq740a75f40.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
