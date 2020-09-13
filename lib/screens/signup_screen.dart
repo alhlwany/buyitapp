@@ -1,12 +1,15 @@
 import 'package:buyitapp/screens/login_screen.dart';
+import 'package:buyitapp/services/auth.dart';
 import 'package:buyitapp/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import '../constants.dart';
+
 class SignupScreen extends StatelessWidget {
   final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
   static String id = 'SignupScreen';
   String _email, _password;
-  //final _auth=Auth();
+  final _auth = Auth();
+
   @override
   Widget build(BuildContext context) {
     double sc_heigh = MediaQuery.of(context).size.height;
@@ -57,36 +60,38 @@ class SignupScreen extends StatelessWidget {
             SizedBox(
               height: sc_heigh * .02,
             ),
-            CustomTextField(
-                onClick: (value) {
-                  _email = value;
-                },
-                icon: Icons.person,
-                hint: 'Enter Your Name'),
+            CustomTextField(icon: Icons.person, hint: 'Enter Your Name'),
             SizedBox(
               height: sc_heigh * .05,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 120),
-              child: FlatButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                onPressed: () async {
-                  if (_globalKey.currentState.validate()) {
-                    _globalKey.currentState.save();
-                   // final authResult=await  _auth.signUp(_email,_password);
-                   // print(authResult.user.uid);
-                    print(_email);
-                    print(_password);
-                  }
-                },
-                color: Colors.black,
-                child: Text(
-                  'SignUp',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontFamily: 'Pacifico'),
+              child: Builder(
+                builder:(context)=> FlatButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  onPressed: () async {
+                    if (_globalKey.currentState.validate()) {
+                      try {
+                        _globalKey.currentState.save();
+                        final authResult = await _auth.signUp(_email, _password);
+                      } catch (e) {
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: Text(
+                              e.toString()
+                          ),
+                        ));
+                      }
+                    }
+                  },
+                  color: Colors.black,
+                  child: Text(
+                    'SignUp',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontFamily: 'Pacifico'),
+                  ),
                 ),
               ),
             ),
@@ -106,7 +111,7 @@ class SignupScreen extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     var pushNamed =
-                    Navigator.pushNamed(context, LoginScreen.id);
+                        Navigator.pushNamed(context, LoginScreen.id);
                   },
                   child: Text(
                     'Login',
