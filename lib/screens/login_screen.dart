@@ -118,7 +118,6 @@ class LoginScreen extends StatelessWidget {
                           color: Colors.black,
                           fontSize: 16,
                           fontFamily: 'Pacifico'),
-
                     ),
                   )
                 ],
