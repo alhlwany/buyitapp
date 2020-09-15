@@ -15,6 +15,8 @@ class LoginScreen extends StatelessWidget {
   String _email, _password;
   final _auth = Auth();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+  final adminPassword = 'Admin1234';
+  bool keepMeLoggedIn = false;
 
   @override
   Widget build(BuildContext context) {
@@ -143,12 +145,17 @@ class LoginScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                   child: Row(children: <Widget>[
                     Expanded(
-                      child: Text('i\'m an admin',textAlign: TextAlign.center,
+                      child: Text('i\'m an admin',
+                        style:TextStyle(fontFamily: 'Ranchers'),
+                        textAlign: TextAlign.center,
                       ),
                     ),
 
                     Expanded(
-                      child: Text('i\'m a user',textAlign: TextAlign.center,
+                      child: Text(
+                        'i\'m a user',
+                        style:TextStyle(fontFamily: 'Ranchers'),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ],
