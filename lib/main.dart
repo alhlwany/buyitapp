@@ -1,3 +1,4 @@
+import 'package:buyitapp/provider/adminMode.dart';
 import 'package:buyitapp/provider/modelHud.dart';
 import 'package:buyitapp/screens/login_screen.dart';
 import 'package:buyitapp/screens/signup_screen.dart';
@@ -15,17 +16,23 @@ class MyApp extends StatelessWidget {
   //HomePage.id:(context)=>HomePage()
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<ModelHud>(
-      create: (context)=>ModelHud(),
+    return  MultiProvider(
+      providers: [
+        ChangeNotifierProvider<ModelHud>(
+          create: (context)=>ModelHud(),),
+        ChangeNotifierProvider<AdminMode>(
+          create: (context)=>AdminMode(),)
+      ],
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        initialRoute: LoginScreen.id,
-        routes: {
-          LoginScreen.id:(context)=>LoginScreen(),
-          SignupScreen.id:(context)=>SignupScreen(),
+          debugShowCheckedModeBanner: false,
+          initialRoute: LoginScreen.id,
+          routes: {
+            LoginScreen.id:(context)=>LoginScreen(),
+            SignupScreen.id:(context)=>SignupScreen(),
 
-        },
-      ),
+          },
+        ),
     );
   }
 }
+
